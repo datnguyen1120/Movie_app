@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/parent"
+    android:layout_marginTop="12dp"
+    android:layout_marginBottom="12dp"
+    tools:background="@color/colorPrimary">
+
+    <ImageView
+        android:id="@+id/imv"
+        android:layout_width="95dp"
+        android:layout_height="120dp"
+        android:scaleType="centerCrop" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="@font/montserrat_regular"
+            android:maxLines="2"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            tools:text="Spiderman" />
+
+        <TextView
+            android:id="@+id/tv_rate_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:drawablePadding="4dp"
+            android:fontFamily="@font/montserrat_semibold"
+            android:textColor="@color/colorTextOrange"
+            android:textSize="12sp"
+            app:drawableLeftCompat="@drawable/ic_star"
+            tools:text="9.5" />
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:drawablePadding="4dp"
+            android:fontFamily="@font/montserrat_regular"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:drawableLeftCompat="@drawable/ic_calendar"
+            tools:text="2020" />
+
+        <TextView
+            android:id="@+id/tv_desc"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="4dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/montserrat_regular"
+            android:lines="2"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            tools:text="Desc" />
+
+    </LinearLayout>
+
+</LinearLayout>

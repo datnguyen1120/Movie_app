@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.datnguyen.movie_dev.ui.fragment.details.DetailsViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:background="@color/colorPrimary"
+        tools:context=".ui.fragment.home.HomeFragment">
+
+        <include
+            android:id="@+id/app_bar"
+            layout="@layout/app_bar" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:fillViewport="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/app_bar">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!--Header-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imv_cover"
+                        android:layout_width="match_parent"
+                        android:layout_height="210dp"
+                        android:scaleType="centerCrop"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:layout_marginTop="-60dp"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="16dp"
+                        app:layout_constraintTop_toBottomOf="@+id/imv_cover">
+
+                        <ImageView
+                            android:id="@+id/imv_avatar"
+                            android:layout_width="100dp"
+                            android:layout_height="126dp" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:layout_weight="1" />
+
+                            <TextView
+                                android:id="@+id/tv_movie_title"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_marginStart="12dp"
+                                android:layout_marginTop="12dp"
+                                android:layout_weight="1"
+                                android:ellipsize="end"
+                                android:fontFamily="@font/montserrat_semibold"
+                                android:maxLines="2"
+                                android:textColor="@color/colorTextWhite_2"
+                                android:textSize="18sp"
+                                tools:text="Title" />
+
+                        </LinearLayout>
+
+                        <ImageView
+                            android:id="@+id/btn_play"
+                            android:layout_width="58dp"
+                            android:layout_height="58dp"
+                            android:layout_gravity="center_vertical"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            app:srcCompat="@drawable/ic_play" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="24dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_release_year"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawablePadding="4dp"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:textColor="@color/colorTextHint"
+                            android:textSize="12sp"
+                            app:drawableLeftCompat="@drawable/ic_calendar"
+                            tools:text="2023" />
+
+                        <View
+                            android:layout_width="12dp"
+                            android:layout_height="0dp" />
+
+                        <TextView
+                            android:id="@+id/tv_status"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawablePadding="4dp"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:textColor="@color/colorTextHint"
+                            android:textSize="12sp"
+                            app:drawableLeftCompat="@drawable/ic_clock"
+                            tools:text="Released" />
+
+                        <View
+                            android:layout_width="12dp"
+                            android:layout_height="0dp" />
+
+                        <TextView
+                            android:id="@+id/tv_genres"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawablePadding="4dp"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:textColor="@color/colorTextHint"
+                            android:textSize="12sp"
+                            app:drawableLeftCompat="@drawable/ic_ticket"
+                            tools:text="Action" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="4dp">
+
+                        <RatingBar
+                            android:id="@+id/rating_bar"
+                            style="?android:attr/ratingBarStyleSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:isIndicator="true"
+                            android:numStars="5"
+                            android:stepSize="0.5"
+                            android:theme="@style/RatingBar" />
+
+                        <TextView
+                            android:id="@+id/tv_rating_score"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:textColor="@color/colorTextOrange"
+                            android:textSize="12sp"
+                            tools:text="9.5" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!--Overview-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:orientation="vertical"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:text="@string/overview"
+                        android:textColor="@color/colorTextWhite_2"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tv_overview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:textColor="@color/colorTextWhite_2"
+                        android:textSize="12sp"
+                        tools:text="@string/overview" />
+
+                    <!--Top Crews-->
+                    <!--Show all items - no scroll-->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycle_view_crews"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:nestedScrollingEnabled="false"
+                        bind:adapter="@{viewModel.crewAdapter}"
+                        bind:gridManager="@{0}"
+                        bind:rows="@{2}" />
+                </LinearLayout>
+
+                <!--Top Casts-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="24dp"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:layout_marginStart="8dp"
+                        android:text="@string/top_casts"
+                        android:textColor="@color/colorTextWhite_2"
+                        android:textSize="14sp" />
+
+                    <!--Top Casts-->
+                    <!--Show all items - no scroll-->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycle_view_casts"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:nestedScrollingEnabled="false"
+                        bind:adapter="@{viewModel.castAdapter}"
+                        bind:gridManager="@{0}"
+                        bind:rows="@{2}" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

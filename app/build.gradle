@@ -1,0 +1,130 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'androidx.navigation.safeargs'
+    id 'kotlin-parcelize'
+    id 'kotlin-kapt'
+}
+
+android {
+    namespace 'com.datnguyen.movie_dev'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.datnguyen.movie_dev"
+        minSdk 23
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        //support vector drawables for android < 21
+        vectorDrawables.useSupportLibrary = true
+
+        //support multi Dex for large library
+        multiDexEnabled true
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+    }
+    //support data binding
+    dataBinding {
+        enabled = true
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+            signingConfig signingConfigs.debug
+            resValue 'string', 'app_name', 'Movie - Dev'
+        }
+        release {
+            debuggable false
+            minifyEnabled false
+//            shrinkResources true
+//            zipAlignEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            resValue 'string', 'app_name', 'Movie - Prod'
+        }
+    }
+    productFlavors {
+        develop {
+            buildConfigField("String", "APIServer", "\"https://api.themoviedb.org/3/\"")
+            buildConfigField("String", "BaseImageUrl", "\"https://image.tmdb.org/t/p/w500\"")
+            buildConfigField("String", "BaseYoutubeUrl", "\"https://www.youtube.com/watch?v= \"")
+            buildConfigField("String", "BaseVimeoUrl", "\"https://vimeo.com/  \"")
+            buildConfigField("String", "APIKey", "\"f7dc6370f39062b33006ec32484d2ca9\"")
+
+            flavorDimensions "default"
+        }
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.8.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    //splash screen api
+    implementation 'androidx.core:core-splashscreen:1.0.0'
+
+    //using multiple dex to avoid the merge conflict between libs
+    implementation "androidx.multidex:multidex:2.0.1"
+
+    //coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4"
+
+    //retrofit for api service conversation with BE
+    implementation "com.squareup.retrofit2:retrofit:2.9.0"
+    implementation "com.squareup.retrofit2:converter-gson:2.9.0"
+    implementation "com.squareup.retrofit2:converter-scalars:2.9.0"
+    //okhttp for retrofit logger
+    implementation "com.squareup.okhttp3:okhttp:4.10.0"
+    implementation "com.squareup.okhttp3:logging-interceptor:4.9.0"
+
+    //gson for model parse
+    implementation "com.google.code.gson:gson:2.9.0"
+
+    //hawk - Secure, simple key-value storage for android
+    implementation "com.orhanobut:hawk:2.0.1"
+
+    //loading animation
+    implementation "com.airbnb.android:lottie:3.7.1"
+
+    //event bus - simplifies the communication between components
+    implementation 'org.greenrobot:eventbus:3.3.1'
+
+    //Glide - display network image with cache
+    implementation 'com.github.bumptech.glide:glide:4.14.2'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.14.2'
+
+    //youtube lib
+    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:11.1.0'
+}
